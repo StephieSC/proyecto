@@ -23,7 +23,7 @@
         android:text="Total: "
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
-        android:id="@+id/al-total"
+        android:id="@+id/al_total"
         android:layout_below="@+id/almuerzos"
         android:layout_alignParentLeft="true"/>
     <TextView
@@ -32,8 +32,8 @@
         android:text="Utilizados: "
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
-        android:id="@+id/al-utilizados"
-        android:layout_below="@+id/al-total"
+        android:id="@+id/al_utilizados"
+        android:layout_below="@+id/al_total"
         android:layout_alignParentLeft="true"/>
     <TextView
         android:layout_width="wrap_content"
@@ -41,16 +41,16 @@
         android:text="Disponibles: "
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
-        android:id="@+id/al-disponibles"
-        android:layout_below="@+id/al-utilizados"
+        android:id="@+id/al_disponibles"
+        android:layout_below="@+id/al_utilizados"
         android:layout_alignParentLeft="true"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detalles"
         android:textSize="18dp"
-        android:id="@+id/boton1"
-        android:layout_below="@+id/al-disponibles"
+        android:id="@+id/detalles_al"
+        android:layout_below="@+id/al_disponibles"
         android:layout_centerHorizontal="true"/>
     <TextView
         android:layout_width="wrap_content"
@@ -59,14 +59,14 @@
         android:layout_centerHorizontal="true"
         android:textSize="24dp"
         android:id="@+id/cena"
-        android:layout_below="@+id/boton1"/>
+        android:layout_below="@+id/detalles_al"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total: "
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
-        android:id="@+id/ce-total"
+        android:id="@+id/ce_total"
         android:layout_below="@+id/cena"
         android:layout_alignParentLeft="true"/>
     <TextView
@@ -75,8 +75,8 @@
         android:text="Utilizados: "
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
-        android:id="@+id/ce-utilizados"
-        android:layout_below="@+id/ce-total"
+        android:id="@+id/ce_utilizados"
+        android:layout_below="@+id/ce_total"
         android:layout_alignParentLeft="true"/>
     <TextView
         android:layout_width="wrap_content"
@@ -84,15 +84,15 @@
         android:text="Disponibles: "
         android:layout_centerHorizontal="true"
         android:textSize="16dp"
-        android:id="@+id/ce-disponibles"
-        android:layout_below="@+id/ce-utilizados"
+        android:id="@+id/ce_disponibles"
+        android:layout_below="@+id/ce_utilizados"
         android:layout_alignParentLeft="true"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detalles"
         android:textSize="18dp"
-        android:id="@+id/boton2"
-        android:layout_below="@+id/ce-disponibles"
+        android:id="@+id/detalles_ce"
+        android:layout_below="@+id/ce_disponibles"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

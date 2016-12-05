@@ -22,7 +22,7 @@ public class Datos {
     public Datos() {
     }
 
-    public Datos(String totalal, String utilizadosal, String disponiblesal,String totalce, String utilizadosce, String disponiblesce, ArrayList detalleal, ArrayList detallece ) {
+    public Datos(String totalal, String utilizadosal, String disponiblesal, String totalce, String utilizadosce, String disponiblesce, ArrayList detalleal, ArrayList detallece ) {
         //Almuerzo
         this.totalAL = totalal;
         this.utilizadosAL = totalal;
