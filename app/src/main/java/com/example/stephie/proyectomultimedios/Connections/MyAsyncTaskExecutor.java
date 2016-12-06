@@ -1,13 +1,21 @@
 package com.example.stephie.proyectomultimedios.Connections;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.stephie.proyectomultimedios.Datos;
 import com.example.stephie.proyectomultimedios.MainActivity;
+import com.example.stephie.proyectomultimedios.MainBotonActivity;
 import com.example.stephie.proyectomultimedios.Presenter.MainPresenter;
+
+import static com.example.stephie.proyectomultimedios.R.id.detalles_al;
 
 /**
  * Created by neo_free on 05/12/2016.
@@ -27,7 +35,7 @@ public class MyAsyncTaskExecutor {
         return instance;
     }
 
-    public Datos executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
+    public Datos executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales, final Button al_detalles,final Button ce_detalles){
         this.ctx = ctx;
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
 
@@ -58,21 +66,20 @@ public class MyAsyncTaskExecutor {
                     ce_totales.setText("Totales: "+datos.getTotalCE());
                     ce_utilizados.setText("Utilizados: "+datos.getUtilizadosCE());
 
+                    al_detalles.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(ctx, MainBotonActivity.class);
+                            ctx.startActivity(i);
+                            }
+                    });
+
                 }
             }
         };
 
         task.execute();
 
-        //Toast.makeText(ctx,
-        //       datos.getDisponiblesAL(), Toast.LENGTH_LONG).show();
-        //al_disponibles.setText("Disponibles: 32");
-        /*al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
-        al_totales.setText("Totales: "+datos.getTotalAL());
-        al_utilizados.setText("Utilizados: "+datos.getUtilizadosAL());
-        ce_disponibles.setText("Disponibles: "+datos.getDisponiblesCE());
-        ce_totales.setText("Totales: "+datos.getTotalCE());
-        ce_utilizados.setText("Utilizados: "+datos.getUtilizadosCE());*/
         return datos;
     }
 }

@@ -11,18 +11,18 @@ public class Datos {
     private String totalAL;
     private String utilizadosAL;
     private String disponiblesAL;
-    private ArrayList detalleAL;
+    private ArrayList<Detalle> detalleAL;
     //Cena
     private String totalCE;
     private String utilizadosCE;
     private String disponiblesCE;
-    private ArrayList detalleCE;
+    private ArrayList<Detalle> detalleCE;
 
 
     public Datos() {
     }
 
-    public Datos(String totalal, String utilizadosal, String disponiblesal, String totalce, String utilizadosce, String disponiblesce, ArrayList detalleal, ArrayList detallece ) {
+    public Datos(String totalal, String utilizadosal, String disponiblesal, String totalce, String utilizadosce, String disponiblesce, ArrayList<Detalle> detalleal, ArrayList<Detalle> detallece ) {
         //Almuerzo
         this.totalAL = totalal;
         this.utilizadosAL = totalal;
@@ -54,10 +54,10 @@ public class Datos {
     public String getDisponiblesAL() {
         return disponiblesAL;
     }
-    public void setDetalleAL(ArrayList detalle) {
+    public void setDetalleAL(ArrayList<Detalle> detalle) {
         this.detalleAL = detalle;
     }
-    public ArrayList getDetalleAL() {
+    public ArrayList<Detalle> getDetalleAL() {
         return detalleAL;
     }
     //Cena
@@ -79,10 +79,10 @@ public class Datos {
     public String getDisponiblesCE() {
         return disponiblesCE;
     }
-    public void setDetalleCE(ArrayList detalle) {
+    public void setDetalleCE(ArrayList<Detalle> detalle) {
         this.detalleCE = detalle;
     }
-    public ArrayList getDetalleCE() {
+    public ArrayList<Detalle> getDetalleCE() {
         return detalleCE;
     }
 }
