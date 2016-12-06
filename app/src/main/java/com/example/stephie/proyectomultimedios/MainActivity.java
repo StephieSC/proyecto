@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         ce_disponibles = (TextView)findViewById(R.id.ce_disponibles);
         detalles_al = (Button)findViewById(R.id.detalles_al);
         detalles_ce = (Button)findViewById(R.id.detalles_ce);
-
-        al_disponibles.setText("Disponibles: its over 9000!!");
         presenter = new MainPresenterImpl(this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
 
     }

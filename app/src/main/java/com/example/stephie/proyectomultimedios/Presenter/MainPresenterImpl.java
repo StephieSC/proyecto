@@ -19,10 +19,17 @@ import java.util.List;
 
 public class MainPresenterImpl implements MainPresenter {
     private Context ctx;
+    private Datos datos;
     public MainPresenterImpl(Context ctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales){
         this.ctx = ctx;
-        MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
-        //al_disponibles.setText("Almuerzos Disponibles: 7");
+        Datos datos = MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
+        //al_disponibles.setText("Disponibles: -----");
+        //al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
+        /*al_totales.setText("Totales: "+datos.getTotalAL());
+        al_utilizados.setText("Utilizados: "+datos.getUtilizadosAL());
+        ce_disponibles.setText("Disponibles: "+datos.getDisponiblesCE());
+        ce_totales.setText("Totales: "+datos.getTotalCE());
+        ce_utilizados.setText("Utilizados: "+datos.getUtilizadosCE());*/
     }
     @Override
     public Datos getDatos(String result) {
@@ -36,6 +43,7 @@ public class MainPresenterImpl implements MainPresenter {
             datos.setDisponiblesCE(jsonObject.optString("available_dinner"));
             datos.setUtilizadosCE(jsonObject.optString("used_dinner"));
             //Agregar la lista de detalles proximamente
+            return datos;
         } catch (JSONException e) {
             e.printStackTrace();
         }
