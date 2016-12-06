@@ -38,11 +38,11 @@ public class MyAsyncTaskExecutor {
 
             @Override
             protected String doInBackground(Void... params) { // AQUI SE CAE NO SE PORQUE ;·;
-                Toast.makeText(ctx,
-                        "pre coneccion ", Toast.LENGTH_LONG).show();
+                //Toast.makeText(ctx,
+                 //       "pre coneccion ", Toast.LENGTH_LONG).show();
                 String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/57f56f722500006e1f134987", 15000);
-                Toast.makeText(ctx,
-                        "pos coneccion ", Toast.LENGTH_LONG).show();
+                //Toast.makeText(ctx,
+                 //       "pos coneccion ", Toast.LENGTH_LONG).show();
                 return resultado;
             }
 
@@ -50,8 +50,8 @@ public class MyAsyncTaskExecutor {
             protected void onPostExecute(String result) {
                 if (result != null) {
                     System.out.println(result);
-                    Toast.makeText(ctx,
-                            "post asy ", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(ctx,
+                    //        "post asy ", Toast.LENGTH_LONG).show();
                     Datos datos = presenter.getDatos(result);
                     al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
                     al_totales.setText("Totales: "+datos.getTotalAL());
