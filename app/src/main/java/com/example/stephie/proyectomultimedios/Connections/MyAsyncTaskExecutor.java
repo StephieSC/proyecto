@@ -19,6 +19,7 @@ public class MyAsyncTaskExecutor {
 
     private static MyAsyncTaskExecutor instance;
     private Context ctx;
+    private Datos datos;
     public static MyAsyncTaskExecutor getInstance() {
         if (instance == null) {
             instance = new MyAsyncTaskExecutor();
@@ -26,8 +27,7 @@ public class MyAsyncTaskExecutor {
         return instance;
     }
 
-    //public void executeMyAsynctask(final MainActivity activity, final RecyclerView mRecyclerView, final MainPresenterImpl presenter, final Database dbInstance) {
-    public void executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
+    public Datos executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
         this.ctx = ctx;
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
 
@@ -37,7 +37,7 @@ public class MyAsyncTaskExecutor {
             }
 
             @Override
-            protected String doInBackground(Void... params) { // AQUI SE CAE NO SE PORQUE ;·;
+            protected String doInBackground(Void... params) {
                 //Toast.makeText(ctx,
                  //       "pre coneccion ", Toast.LENGTH_LONG).show();
                 String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/57f56f722500006e1f134987", 15000);
@@ -49,20 +49,31 @@ public class MyAsyncTaskExecutor {
             @Override
             protected void onPostExecute(String result) {
                 if (result != null) {
-                    System.out.println(result);
-                   // Toast.makeText(ctx,
-                    //        "post asy ", Toast.LENGTH_LONG).show();
-                    Datos datos = presenter.getDatos(result);
+                    //System.out.println(result);
+                    datos = presenter.getDatos(result);
                     al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
                     al_totales.setText("Totales: "+datos.getTotalAL());
                     al_utilizados.setText("Utilizados: "+datos.getUtilizadosAL());
                     ce_disponibles.setText("Disponibles: "+datos.getDisponiblesCE());
                     ce_totales.setText("Totales: "+datos.getTotalCE());
                     ce_utilizados.setText("Utilizados: "+datos.getUtilizadosCE());
+
                 }
             }
         };
+
         task.execute();
+
+        //Toast.makeText(ctx,
+        //       datos.getDisponiblesAL(), Toast.LENGTH_LONG).show();
+        //al_disponibles.setText("Disponibles: 32");
+        /*al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
+        al_totales.setText("Totales: "+datos.getTotalAL());
+        al_utilizados.setText("Utilizados: "+datos.getUtilizadosAL());
+        ce_disponibles.setText("Disponibles: "+datos.getDisponiblesCE());
+        ce_totales.setText("Totales: "+datos.getTotalCE());
+        ce_utilizados.setText("Utilizados: "+datos.getUtilizadosCE());*/
+        return datos;
     }
 }
 
