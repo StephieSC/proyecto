@@ -16,5 +16,20 @@
             </intent-filter>
         </activity>
     </application>
+    <!-- Notificaciones push-->
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <permission
+        android:name="com.example.stephie.proyectomultimedios.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission
+        android:name="com.example.stephie.proyectomultimedios.permission.C2D_MESSAGE" />
+    <receiver
+        android:name="com.google.android.gms.gcm.GcmReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND" >
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="com.example.stephie.proyectomultimedios.permission" />
+        </intent-filter>
+    </receiver>
 </manifest>
