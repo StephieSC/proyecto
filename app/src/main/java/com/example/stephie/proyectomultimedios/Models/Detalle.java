@@ -1,4 +1,4 @@
-package com.example.stephie.proyectomultimedios;
+package com.example.stephie.proyectomultimedios.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -17,7 +17,7 @@ public class Detalle implements Parcelable {
         this.hour=hora;
     }
 
-    protected Detalle(Parcel in) {
+    private Detalle(Parcel in) {
         date = in.readString();
         hour = in.readString();
     }
