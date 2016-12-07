@@ -42,7 +42,7 @@ public class MyAsyncTaskExecutor {
 
 
 
-  /*  public void executeMyAsynctask(final Context ctx, final MainPresenter presenter){
+    public void executeMyAsynctask(final Context ctx, final MainPresenter presenter){
         this.ctx = ctx;
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
 
@@ -74,7 +74,7 @@ public class MyAsyncTaskExecutor {
     }
 
 
-*/
+
 
    // public void executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
    public Datos executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales, final Button al_detalles,final Button ce_detalles){
@@ -97,12 +97,6 @@ public class MyAsyncTaskExecutor {
             @Override
             protected void onPostExecute(String result) {
                 if (result != null) {
-                    //System.out.println(result);
-                    //CHOQUE
-                    student = presenter.getStudent(result);
-                    Log.d(TAG, "onPostExecute: "+student.getRol());
-                    presenter.registroGCM(student);
-                    //FIN DEL CHOQUE
                     datos = presenter.getDatos(result);
                     al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
                     al_totales.setText("Totales: "+datos.getTotalAL());
