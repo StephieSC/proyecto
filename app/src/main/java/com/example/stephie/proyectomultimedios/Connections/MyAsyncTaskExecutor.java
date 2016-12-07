@@ -75,11 +75,7 @@ public class MyAsyncTaskExecutor {
 
             @Override
             protected String doInBackground(Void... params) {
-                //Toast.makeText(ctx,
-                 //       "pre coneccion ", Toast.LENGTH_LONG).show();
                 String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/57f56f722500006e1f134987", 15000);
-                //Toast.makeText(ctx,
-                 //       "pos coneccion ", Toast.LENGTH_LONG).show();
                 return resultado;
             }
 

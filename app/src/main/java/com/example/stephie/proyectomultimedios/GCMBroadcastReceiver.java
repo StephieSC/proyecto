@@ -16,7 +16,6 @@ import static android.content.ContentValues.TAG;
 public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "onReceive: Recibien notificacion");
         ComponentName componentName = new ComponentName(context.getPackageName(), GCMIntentService.class.getName());
         startWakefulService(context, (intent.setComponent(componentName)));
         setResultCode(Activity.RESULT_OK);
