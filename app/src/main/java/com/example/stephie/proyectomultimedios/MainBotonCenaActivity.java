@@ -1,11 +1,11 @@
 package com.example.stephie.proyectomultimedios;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.stephie.proyectomultimedios.Models.Detalle;
 import com.example.stephie.proyectomultimedios.Presenter.MainPresenterImpl;
 
 import java.util.List;

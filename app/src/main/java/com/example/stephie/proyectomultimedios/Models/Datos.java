@@ -1,4 +1,4 @@
-package com.example.stephie.proyectomultimedios;
+package com.example.stephie.proyectomultimedios.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -39,7 +39,7 @@ public class Datos implements Parcelable{
 
     }
 
-    protected Datos(Parcel in) {
+    private Datos(Parcel in) {
         totalAL = in.readString();
         utilizadosAL = in.readString();
         disponiblesAL = in.readString();

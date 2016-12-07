@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.stephie.proyectomultimedios.Models.Detalle;
+
 import java.util.List;
 
 /**
