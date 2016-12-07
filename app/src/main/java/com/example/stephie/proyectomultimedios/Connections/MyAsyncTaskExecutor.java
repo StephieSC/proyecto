@@ -3,22 +3,19 @@ package com.example.stephie.proyectomultimedios.Connections;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-<<<<<<< HEAD
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-
-import com.example.stephie.proyectomultimedios.Datos;
 import com.example.stephie.proyectomultimedios.MainBotonCenaActivity;
 import com.example.stephie.proyectomultimedios.MainBotonLunchActivity;
-=======
+
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.stephie.proyectomultimedios.Models.Datos;
 import com.example.stephie.proyectomultimedios.Models.Students;
->>>>>>> pr/3
+
 import com.example.stephie.proyectomultimedios.Presenter.MainPresenter;
 import com.example.stephie.proyectomultimedios.SinBecaActivity;
 
@@ -43,10 +40,9 @@ public class MyAsyncTaskExecutor {
         return instance;
     }
 
-<<<<<<< HEAD
-    public Datos executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales, final Button al_detalles,final Button ce_detalles){
-=======
-    public void executeMyAsynctask(final Context ctx, final MainPresenter presenter){
+
+
+  /*  public void executeMyAsynctask(final Context ctx, final MainPresenter presenter){
         this.ctx = ctx;
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
 
@@ -78,10 +74,10 @@ public class MyAsyncTaskExecutor {
     }
 
 
+*/
 
-
-    public void executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
-
+   // public void executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
+   public Datos executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales, final Button al_detalles,final Button ce_detalles){
         this.ctx = ctx;
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
 
@@ -92,11 +88,9 @@ public class MyAsyncTaskExecutor {
 
             @Override
             protected String doInBackground(Void... params) {
-                //Toast.makeText(ctx,
-                 //       "pre coneccion ", Toast.LENGTH_LONG).show();
+
                 String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/57f56f722500006e1f134987", 15000);
-                //Toast.makeText(ctx,
-                 //       "pos coneccion ", Toast.LENGTH_LONG).show();
+
                 return resultado;
             }
 
@@ -104,6 +98,11 @@ public class MyAsyncTaskExecutor {
             protected void onPostExecute(String result) {
                 if (result != null) {
                     //System.out.println(result);
+                    //CHOQUE
+                    student = presenter.getStudent(result);
+                    Log.d(TAG, "onPostExecute: "+student.getRol());
+                    presenter.registroGCM(student);
+                    //FIN DEL CHOQUE
                     datos = presenter.getDatos(result);
                     al_disponibles.setText("Disponibles: "+datos.getDisponiblesAL());
                     al_totales.setText("Totales: "+datos.getTotalAL());

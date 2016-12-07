@@ -34,15 +34,9 @@ public class MainActivity extends AppCompatActivity {
         ce_totales = (TextView)findViewById(R.id.ce_total);
         ce_utilizados = (TextView)findViewById(R.id.ce_utilizados);
         ce_disponibles = (TextView)findViewById(R.id.ce_disponibles);
-<<<<<<< HEAD
         al_detalles = (Button)findViewById(R.id.detalles_al);
         ce_detalles = (Button)findViewById(R.id.detalles_ce);
         presenter = new MainPresenterImpl(this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales, al_detalles, ce_detalles);
-=======
-        detalles_al = (Button)findViewById(R.id.detalles_al);
-        detalles_ce = (Button)findViewById(R.id.detalles_ce);
-        presenter = new MainPresenterImpl(getApplicationContext(), MainActivity.this,al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
->>>>>>> pr/3
 
     }
 }
