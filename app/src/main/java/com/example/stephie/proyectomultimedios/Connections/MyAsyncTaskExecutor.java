@@ -81,7 +81,7 @@ public class MyAsyncTaskExecutor {
 
 
     public void executeMyAsynctask(final Context ctx, final MainPresenter presenter, final TextView al_disponibles, final TextView al_utilizados, final TextView al_totales, final TextView ce_disponibles, final TextView ce_utilizados, final TextView ce_totales){
->>>>>>> pr/3
+
         this.ctx = ctx;
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
 
@@ -142,10 +142,8 @@ public class MyAsyncTaskExecutor {
 
         task.execute();
 
-<<<<<<< HEAD
         return datos;
-=======
->>>>>>> pr/3
+
     }
 }
 
