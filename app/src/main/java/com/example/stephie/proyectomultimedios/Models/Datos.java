@@ -1,4 +1,4 @@
-package com.example.stephie.proyectomultimedios;
+package com.example.stephie.proyectomultimedios.Models;
 
 import java.util.ArrayList;
 

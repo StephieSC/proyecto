@@ -17,7 +17,10 @@
         </activity>
     </application>
     <!-- Notificaciones push-->
+    <meta-data android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <permission
         android:name="com.example.stephie.proyectomultimedios.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -29,7 +32,9 @@
         android:permission="com.google.android.c2dm.permission.SEND" >
         <intent-filter>
             <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="com.example.stephie.proyectomultimedios.permission" />
+            <category android:name="com.example.stephie.proyectomultimedios.permission" /><!-- posible error aca-->
         </intent-filter>
     </receiver>
+
+    <service android:name=".GCMIntentService" />
 </manifest>

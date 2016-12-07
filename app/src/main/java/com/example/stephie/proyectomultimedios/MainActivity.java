@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private Button detalles_ce;
 
     private MainPresenter presenter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         ce_disponibles = (TextView)findViewById(R.id.ce_disponibles);
         detalles_al = (Button)findViewById(R.id.detalles_al);
         detalles_ce = (Button)findViewById(R.id.detalles_ce);
-        presenter = new MainPresenterImpl(this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
+        presenter = new MainPresenterImpl(getApplicationContext(), MainActivity.this,al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
 
     }
 }

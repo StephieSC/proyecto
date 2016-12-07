@@ -1,8 +1,9 @@
 package com.example.stephie.proyectomultimedios.Presenter;
 
-import com.example.stephie.proyectomultimedios.Datos;
+import android.content.Context;
 
-import java.util.List;
+import com.example.stephie.proyectomultimedios.Models.Datos;
+import com.example.stephie.proyectomultimedios.Models.Students;
 
 /**
  * Created by neo_free on 05/12/2016.
@@ -11,5 +12,9 @@ import java.util.List;
 public interface MainPresenter {
 
     public Datos getDatos(String result);
+    public Students getStudent(String result);
+    public String getRegistrationId(Context ctx);
+    public void registroGCM(Students student);
+
 
 }
