@@ -1,7 +1,10 @@
 package com.example.stephie.proyectomultimedios.Models;
+<<<<<<< HEAD:app/src/main/java/com/example/stephie/proyectomultimedios/Models/Datos.java
 
 import android.os.Parcel;
 import android.os.Parcelable;
+=======
+>>>>>>> pr/3:app/src/main/java/com/example/stephie/proyectomultimedios/Models/Datos.java
 
 import java.util.ArrayList;
 
