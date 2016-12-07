@@ -151,6 +151,7 @@ public class MainPresenterImpl implements MainPresenter {
         Log.d(TAG, "Registro GCM encontrado (usuario=" + registeredUser +
                 ", version=" + registeredVersion +
                 ", expira=" + expirationDate + ")");
+        Log.d(TAG, "getRegistrationId: "+registrationId);
 
         int currentVersion = getAppVersion(ctx);
 
