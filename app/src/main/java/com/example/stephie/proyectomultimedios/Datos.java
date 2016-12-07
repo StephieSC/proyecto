@@ -1,12 +1,15 @@
 package com.example.stephie.proyectomultimedios;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by Stephie on 04-12-2016.
  */
 
-public class Datos {
+public class Datos implements Parcelable{
     //Almuerzo
     private String totalAL;
     private String utilizadosAL;
@@ -35,6 +38,28 @@ public class Datos {
         this.detalleCE = detallece;
 
     }
+
+    protected Datos(Parcel in) {
+        totalAL = in.readString();
+        utilizadosAL = in.readString();
+        disponiblesAL = in.readString();
+        totalCE = in.readString();
+        utilizadosCE = in.readString();
+        disponiblesCE = in.readString();
+    }
+
+    public static final Creator<Datos> CREATOR = new Creator<Datos>() {
+        @Override
+        public Datos createFromParcel(Parcel in) {
+            return new Datos(in);
+        }
+
+        @Override
+        public Datos[] newArray(int size) {
+            return new Datos[size];
+        }
+    };
+
     //Almuerzo
     public String getTotalAL() {
         return totalAL;
@@ -84,5 +109,31 @@ public class Datos {
     }
     public ArrayList<Detalle> getDetalleCE() {
         return detalleCE;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(totalAL);
+        parcel.writeString(utilizadosAL);
+        parcel.writeString(disponiblesAL);
+        parcel.writeString(totalCE);
+        parcel.writeString(utilizadosCE);
+        parcel.writeString(disponiblesCE);
+        parcel.writeTypedList(detalleAL);
+        parcel.writeTypedList(detalleCE);
+    }
+    public void readFromParcel(Parcel in){
+        totalAL=in.readString();
+        utilizadosAL=in.readString();
+        disponiblesAL=in.readString();
+        totalCE=in.readString();
+        utilizadosCE=in.readString();
+        disponiblesCE=in.readString();
+
     }
 }

@@ -2,20 +2,17 @@ package com.example.stephie.proyectomultimedios.Connections;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.stephie.proyectomultimedios.Datos;
-import com.example.stephie.proyectomultimedios.MainActivity;
-import com.example.stephie.proyectomultimedios.MainBotonActivity;
+import com.example.stephie.proyectomultimedios.MainBotonCenaActivity;
+import com.example.stephie.proyectomultimedios.MainBotonLunchActivity;
 import com.example.stephie.proyectomultimedios.Presenter.MainPresenter;
-
-import static com.example.stephie.proyectomultimedios.R.id.detalles_al;
+import com.example.stephie.proyectomultimedios.SinBecaActivity;
 
 /**
  * Created by neo_free on 05/12/2016.
@@ -69,10 +66,26 @@ public class MyAsyncTaskExecutor {
                     al_detalles.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent i = new Intent(ctx, MainBotonActivity.class);
+                            if(datos.getTotalAL().equals("0")){
+                                Intent i = new Intent(ctx, SinBecaActivity.class);
+                                ctx.startActivity(i);
+                            }else{
+                            Intent i = new Intent(ctx, MainBotonLunchActivity.class);
+                            i.putExtra("detalles","1");
                             ctx.startActivity(i);
                             }
-                    });
+                    }});
+                    ce_detalles.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(datos.getTotalCE().equals("0")){
+                                Intent i = new Intent(ctx, SinBecaActivity.class);
+                                ctx.startActivity(i);
+                            }else{
+                            Intent i = new Intent(ctx, MainBotonCenaActivity.class);
+                            ctx.startActivity(i);
+                        }
+                    }});
 
                 }
             }

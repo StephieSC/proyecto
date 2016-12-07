@@ -18,12 +18,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainBotonActivity"
+            android:name=".MainBotonLunchActivity"
             android:label="Detalles">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".SinBecaActivity"
+            android:label="Detalles">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /></activity>
     </application>
 
 </manifest>

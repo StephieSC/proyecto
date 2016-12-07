@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainPresenterImpl implements MainPresenter {
     private Context ctx;
-    private Datos datos;
+    public static Datos datos;
     public MainPresenterImpl(Context ctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales, Button al_detalles,Button ce_detalles){
         this.ctx = ctx;
         Datos datos = MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales,al_detalles,ce_detalles);
@@ -66,4 +66,5 @@ public class MainPresenterImpl implements MainPresenter {
         }
         return (ArrayList<Detalle>) detalles;
     }
+    public static Datos obtenerDatos(){return datos;}
 }
