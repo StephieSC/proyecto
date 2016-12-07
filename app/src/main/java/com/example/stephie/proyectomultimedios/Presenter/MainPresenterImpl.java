@@ -1,21 +1,30 @@
 package com.example.stephie.proyectomultimedios.Presenter;
 
 import android.content.Context;
+
+import android.widget.Button;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.util.Log;
+
 import android.widget.TextView;
 
 import com.example.stephie.proyectomultimedios.Connections.MyAsyncTaskExecutor;
+
 import com.example.stephie.proyectomultimedios.Models.Datos;
 import com.example.stephie.proyectomultimedios.MainActivity;
+import com.example.stephie.proyectomultimedios.Models.Detalle;
 import com.example.stephie.proyectomultimedios.Models.Students;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
+import java.util.ArrayList;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -24,7 +33,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
 
 /**
  * Created by neo_free on 05/12/2016.
@@ -32,8 +43,8 @@ import java.util.Locale;
 
 public class MainPresenterImpl implements MainPresenter {
     private Context ctx;
-    private Context mctx;
-    private Datos datos;
+
+    public static Datos datos;
     private Students student;
 
 
@@ -51,34 +62,59 @@ public class MainPresenterImpl implements MainPresenter {
     private String regid;
 
 
-
-
-
-    public MainPresenterImpl(Context ctx, Context mctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales){
+    public MainPresenterImpl(Context ctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales, Button al_detalles,Button ce_detalles){
         this.ctx = ctx;
-        MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this);
-        MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
+        Datos datos = MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales,al_detalles,ce_detalles);
+
+
+
+        // ic MainPresenterImpl(Context ctx, Context mctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales){
+        //this.ctx = ctx;
+        //MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this);
+        //MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
         //registroGCM();
+
 
     }
     @Override
     public Datos getDatos(String result) {
-        Datos datos = new Datos();
+        datos = new Datos();
+
         try{
             JSONObject jsonObject = new JSONObject(result);
+            //Almuerzo
             datos.setTotalAL(jsonObject.optString("total_lunch"));
             datos.setDisponiblesAL(jsonObject.optString("available_lunch"));
             datos.setUtilizadosAL(jsonObject.optString("used_lunch"));
+            JSONArray ArrayLunch= jsonObject.getJSONArray("lunch");
+            datos.setDetalleAL(parseDetalle(ArrayLunch));
+            //Cena
             datos.setTotalCE(jsonObject.optString("total_dinner"));
             datos.setDisponiblesCE(jsonObject.optString("available_dinner"));
             datos.setUtilizadosCE(jsonObject.optString("used_dinner"));
-            //Agregar la lista de detalles proximamente
+            JSONArray ArrayDinner= jsonObject.getJSONArray("dinner");
+            datos.setDetalleCE(parseDetalle(ArrayDinner));
+
             return datos;
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
     }
+    private ArrayList<Detalle> parseDetalle(JSONArray ArrayComida) throws JSONException {
+        List<Detalle> detalles = new ArrayList<>();
+        int size = ArrayComida.length();
+        for(int i = 0; i < size; i++){
+            JSONObject entryObj = ArrayComida.getJSONObject(i);
+            Detalle detalle = new Detalle();
+            detalle.setDate(entryObj.optString("date"));
+            detalle.setHour(entryObj.optString("hour"));
+            detalles.add(detalle);
+        }
+        return (ArrayList<Detalle>) detalles;
+    }
+    public static Datos obtenerDatos(){return datos;}
+
 
     public Students getStudent(String result)
     {
