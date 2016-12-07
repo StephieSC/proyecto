@@ -88,9 +88,13 @@ public class MyAsyncTaskExecutor {
 
             @Override
             protected String doInBackground(Void... params) {
+<<<<<<< HEAD
+                String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/57f56f722500006e1f134987", 15000);
+=======
 
                 String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/57f56f722500006e1f134987", 15000);
 
+>>>>>>> upstream/master
                 return resultado;
             }
 
