@@ -20,6 +20,7 @@ public class HttpServerConnection {
             conn.setConnectTimeout(timeOut);
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
 
             conn.connect();
 
