@@ -1,37 +1,31 @@
 package com.example.stephie.proyectomultimedios.Presenter;
 
 import android.content.Context;
-<<<<<<< HEAD
+
 import android.widget.Button;
-=======
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.util.Log;
->>>>>>> pr/3
+
 import android.widget.TextView;
 
 import com.example.stephie.proyectomultimedios.Connections.MyAsyncTaskExecutor;
-<<<<<<< HEAD
-import com.example.stephie.proyectomultimedios.Datos;
-import com.example.stephie.proyectomultimedios.Detalle;
-import com.example.stephie.proyectomultimedios.R;
-=======
+
 import com.example.stephie.proyectomultimedios.Models.Datos;
 import com.example.stephie.proyectomultimedios.MainActivity;
+import com.example.stephie.proyectomultimedios.Models.Detalle;
 import com.example.stephie.proyectomultimedios.Models.Students;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
->>>>>>> pr/3
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-import java.util.List;
-=======
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -39,8 +33,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
->>>>>>> pr/3
+
 
 /**
  * Created by neo_free on 05/12/2016.
@@ -48,14 +43,8 @@ import java.util.Locale;
 
 public class MainPresenterImpl implements MainPresenter {
     private Context ctx;
-<<<<<<< HEAD
+
     public static Datos datos;
-    public MainPresenterImpl(Context ctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales, Button al_detalles,Button ce_detalles){
-        this.ctx = ctx;
-        Datos datos = MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales,al_detalles,ce_detalles);
-=======
-    private Context mctx;
-    private Datos datos;
     private Students student;
 
 
@@ -73,15 +62,18 @@ public class MainPresenterImpl implements MainPresenter {
     private String regid;
 
 
-
-
-
-    public MainPresenterImpl(Context ctx, Context mctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales){
+    public MainPresenterImpl(Context ctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales, Button al_detalles,Button ce_detalles){
         this.ctx = ctx;
-        MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this);
-        MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
+        Datos datos = MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales,al_detalles,ce_detalles);
+
+
+
+        // ic MainPresenterImpl(Context ctx, Context mctx, TextView al_disponibles, TextView al_utilizados, TextView al_totales, TextView ce_disponibles, TextView ce_utilizados, TextView ce_totales){
+        //this.ctx = ctx;
+        //MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this);
+        //MyAsyncTaskExecutor.getInstance().executeMyAsynctask(ctx, this, al_disponibles,al_utilizados, al_totales, ce_disponibles, ce_utilizados, ce_totales);
         //registroGCM();
->>>>>>> pr/3
+
 
     }
     @Override
@@ -109,7 +101,6 @@ public class MainPresenterImpl implements MainPresenter {
         }
         return null;
     }
-<<<<<<< HEAD
     private ArrayList<Detalle> parseDetalle(JSONArray ArrayComida) throws JSONException {
         List<Detalle> detalles = new ArrayList<>();
         int size = ArrayComida.length();
@@ -123,7 +114,7 @@ public class MainPresenterImpl implements MainPresenter {
         return (ArrayList<Detalle>) detalles;
     }
     public static Datos obtenerDatos(){return datos;}
-=======
+
 
     public Students getStudent(String result)
     {
@@ -292,5 +283,4 @@ public class MainPresenterImpl implements MainPresenter {
             tarea.execute(student_in);
         }
     }
->>>>>>> pr/3
 }
